@@ -21,7 +21,7 @@ Change to the project directory
 
 Edit `config.xml` and add a line to install the plugin
 
-    <gap:plugin name="phonegap-nfc" source="npm" />
+    <gap:plugin name="nfc_mabs10" source="npm" />
 
 ### Edit `index.js`
 

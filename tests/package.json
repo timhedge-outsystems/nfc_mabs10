@@ -1,9 +1,9 @@
 {
   "name": "com.chariotsolutions.nfc.plugin.tests",
   "version": "0.0.1-dev",
-  "description": "Tests for phonegap-nfc",
+  "description": "Tests for nfc_mabs10",
   "cordova": {
-    "id": "phonegap-nfc-tests",
+    "id": "nfc_mabs10-tests",
     "platforms": []
   },
   "keywords": [
