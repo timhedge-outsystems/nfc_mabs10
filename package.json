@@ -1,20 +1,17 @@
 {
-  "name": "phonegap-nfc",
-  "version": "0.7.3-OS",
-  "description": "Near Field Communication (NFC) Plugin. Read and write NDEF messages to NFC tags and share NDEF messages with peers.",
+  "name": "nfc_mabs10",
+  "version": "0.1",
+  "description": "Near Field Communication (NFC) Plugin. Read NDEF messages to NFC tags and share NDEF messages with peers.",
   "cordova": {
-    "id": "phonegap-nfc",
+    "id": "nfc_mabs10",
     "platforms": [
       "android",
-      "wp8",
-      "windows",
-      "blackberry10",
       "ios"
     ]
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chariotsolutions/phonegap-nfc.git"
+    "url": "https://github.com/PaulHoOutsystems/nfc_mabs10.git"
   },
   "keywords": [
     "nfc",
@@ -22,15 +19,12 @@
     "ecosystem:cordova",
     "cordova",
     "cordova-android",
-    "cordova-wp8",
-    "cordova-windows",
-    "cordova-blackberry10",
     "cordova-ios"
   ],
-  "author": "Don Coleman <don.coleman@gmail.com>",
+  "author": "Paul Ho <paul.ho@outsystems.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chariotsolutions/phonegap-nfc/issues"
+    "url": "https://github.com/PaulHoOutsystems/nfc_mabs10/issues"
   },
-  "homepage": "https://github.com/chariotsolutions/phonegap-nfc#readme"
+  "homepage": "https://github.com/PaulHoOutsystems/nfc_mabs10"
 }

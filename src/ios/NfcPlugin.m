@@ -88,63 +88,63 @@
     [self startScanSession:command];
 }
 
-- (void)writeTag:(CDVInvokedUrlCommand*)command API_AVAILABLE(ios(13.0)){
-    NSLog(@"writeTag");
+// - (void)writeTag:(CDVInvokedUrlCommand*)command API_AVAILABLE(ios(13.0)){
+//     NSLog(@"writeTag");
     
-    self.writeMode = YES;
-    self.shouldUseTagReaderSession = NO;
-    BOOL reusingSession = NO;
+//     self.writeMode = YES;
+//     self.shouldUseTagReaderSession = NO;
+//     BOOL reusingSession = NO;
     
-    NSArray<NSDictionary *> *ndefData = [command argumentAtIndex:0];
+//     NSArray<NSDictionary *> *ndefData = [command argumentAtIndex:0];
 
-    // Create the NDEF Message
-    NSMutableArray<NFCNDEFPayload*> *payloads = [NSMutableArray new];
+//     // Create the NDEF Message
+//     NSMutableArray<NFCNDEFPayload*> *payloads = [NSMutableArray new];
                               
-    @try {
-        for (id recordData in ndefData) {
-            NSNumber *tnfNumber = [recordData objectForKey:@"tnf"];
-            NFCTypeNameFormat tnf = (uint8_t)[tnfNumber intValue];
-            NSData *type = [self uint8ArrayToNSData:[recordData objectForKey:@"type"]];
-            NSData *identifier = [self uint8ArrayToNSData:[recordData objectForKey:@"identifiers"]];
-            NSData *payload  = [self uint8ArrayToNSData:[recordData objectForKey:@"payload"]];
-            NFCNDEFPayload *record = [[NFCNDEFPayload alloc] initWithFormat:tnf type:type identifier:identifier payload:payload];
-            [payloads addObject:record];
-        }
-        NSLog(@"%@", payloads);
-        NFCNDEFMessage *message = [[NFCNDEFMessage alloc] initWithNDEFRecords:payloads];
-        self.messageToWrite = message;
-    } @catch(NSException *e) {
-        CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Invalid NDEF Message"];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-        return;
-    }
+//     @try {
+//         for (id recordData in ndefData) {
+//             NSNumber *tnfNumber = [recordData objectForKey:@"tnf"];
+//             NFCTypeNameFormat tnf = (uint8_t)[tnfNumber intValue];
+//             NSData *type = [self uint8ArrayToNSData:[recordData objectForKey:@"type"]];
+//             NSData *identifier = [self uint8ArrayToNSData:[recordData objectForKey:@"identifiers"]];
+//             NSData *payload  = [self uint8ArrayToNSData:[recordData objectForKey:@"payload"]];
+//             NFCNDEFPayload *record = [[NFCNDEFPayload alloc] initWithFormat:tnf type:type identifier:identifier payload:payload];
+//             [payloads addObject:record];
+//         }
+//         NSLog(@"%@", payloads);
+//         NFCNDEFMessage *message = [[NFCNDEFMessage alloc] initWithNDEFRecords:payloads];
+//         self.messageToWrite = message;
+//     } @catch(NSException *e) {
+//         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Invalid NDEF Message"];
+//         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+//         return;
+//     }
 
-    if (self.nfcSession && self.nfcSession.isReady) {       // reuse existing session
-        reusingSession = YES;
-    } else {                                                // create a new session
-        if (self.shouldUseTagReaderSession) {
-            NSLog(@"Using NFCTagReaderSession");
+//     if (self.nfcSession && self.nfcSession.isReady) {       // reuse existing session
+//         reusingSession = YES;
+//     } else {                                                // create a new session
+//         if (self.shouldUseTagReaderSession) {
+//             NSLog(@"Using NFCTagReaderSession");
 
-            self.nfcSession = [[NFCTagReaderSession new]
-                       initWithPollingOption:(NFCPollingISO14443 | NFCPollingISO15693 | NFCPollingISO18092)
-                       delegate:self queue:dispatch_get_main_queue()];
+//             self.nfcSession = [[NFCTagReaderSession new]
+//                        initWithPollingOption:(NFCPollingISO14443 | NFCPollingISO15693 | NFCPollingISO18092)
+//                        delegate:self queue:dispatch_get_main_queue()];
 
-        } else {
-            NSLog(@"Using NFCTagReaderSession");
-            self.nfcSession = [[NFCNDEFReaderSession new]initWithDelegate:self queue:nil invalidateAfterFirstRead:FALSE];
-        }
-    }
+//         } else {
+//             NSLog(@"Using NFCTagReaderSession");
+//             self.nfcSession = [[NFCNDEFReaderSession new]initWithDelegate:self queue:nil invalidateAfterFirstRead:FALSE];
+//         }
+//     }
 
-    self.nfcSession.alertMessage = @"Hold near writable NFC tag to update.";
-    sessionCallbackId = [command.callbackId copy];
+//     self.nfcSession.alertMessage = @"Hold near writable NFC tag to update.";
+//     sessionCallbackId = [command.callbackId copy];
 
-    if (reusingSession) {                   // reusing a read session to write
-        self.keepSessionOpen = NO;          // close session after writing
-        [self writeNDEFTag:self.nfcSession status:connectedTagStatus tag:connectedTag];
-    } else {
-        [self.nfcSession beginSession];
-    }
-}
+//     if (reusingSession) {                   // reusing a read session to write
+//         self.keepSessionOpen = NO;          // close session after writing
+//         [self writeNDEFTag:self.nfcSession status:connectedTagStatus tag:connectedTag];
+//     } else {
+//         [self.nfcSession beginSession];
+//     }
+// }
 
 - (void)cancelScan:(CDVInvokedUrlCommand*)command API_AVAILABLE(ios(11.0)){
     NSLog(@"cancelScan");

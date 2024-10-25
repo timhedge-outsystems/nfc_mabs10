@@ -204,45 +204,45 @@ import CoreNFC
        }
     }
     
-    @objc(writeTag:)
-    func writeTag(command: CDVInvokedUrlCommand) {
-        if #available(iOS 13.0, *) {
-            if command.arguments.count <= 0 {
-                self.sendError(command: command, result: "WriteTag parameter error")
-                return
-            }
+    // @objc(writeTag:)
+    // func writeTag(command: CDVInvokedUrlCommand) {
+    //     if #available(iOS 13.0, *) {
+    //         if command.arguments.count <= 0 {
+    //             self.sendError(command: command, result: "WriteTag parameter error")
+    //             return
+    //         }
         
-            DispatchQueue.main.async {
-                print("Begin NDEF writing session")
+    //         DispatchQueue.main.async {
+    //             print("Begin NDEF writing session")
 
-                if self.ndefWriterController == nil {
-                    let alertMessage = ""
-                    var ndefMessage: NSArray?
-                    if command.arguments.count != 0 {
-                        ndefMessage = command.arguments[0] as? NSArray
-                    }
+    //             if self.ndefWriterController == nil {
+    //                 let alertMessage = ""
+    //                 var ndefMessage: NSArray?
+    //                 if command.arguments.count != 0 {
+    //                     ndefMessage = command.arguments[0] as? NSArray
+    //                 }
                     
-                    self.ndefWriterController = NFCNDEFWriterDelegate(completed: {
-                        (response: [AnyHashable: Any]?, error: Error?) -> Void in
-                        DispatchQueue.main.async {
-                            print("handle NDEF")
-                            if error != nil {
-                                self.lastError = error
-                                self.sendError(command: command, result: error!.localizedDescription)
-                            } else {
-                                // self.sendSuccess(command: command, result: response ?? "")
-                                //self.sendThroughChannel(jsonDictionary: response ?? [:])
-                                self.sendSuccess(command: command, result: true)
-                            }
-                            self.ndefWriterController = nil
-                        }
-                    }, alertMessage: alertMessage, ndefMessage: ndefMessage!)
-                }
-            }
-        } else {
-            self.sendError(command: command, result: "Write is only available on iOS 13+")
-        }
-    }
+    //                 self.ndefWriterController = NFCNDEFWriterDelegate(completed: {
+    //                     (response: [AnyHashable: Any]?, error: Error?) -> Void in
+    //                     DispatchQueue.main.async {
+    //                         print("handle NDEF")
+    //                         if error != nil {
+    //                             self.lastError = error
+    //                             self.sendError(command: command, result: error!.localizedDescription)
+    //                         } else {
+    //                             // self.sendSuccess(command: command, result: response ?? "")
+    //                             //self.sendThroughChannel(jsonDictionary: response ?? [:])
+    //                             self.sendSuccess(command: command, result: true)
+    //                         }
+    //                         self.ndefWriterController = nil
+    //                     }
+    //                 }, alertMessage: alertMessage, ndefMessage: ndefMessage!)
+    //             }
+    //         }
+    //     } else {
+    //         self.sendError(command: command, result: "Write is only available on iOS 13+")
+    //     }
+    // }
 
     @objc(invalidateSession:)
     func invalidateSession(command: CDVInvokedUrlCommand) {
