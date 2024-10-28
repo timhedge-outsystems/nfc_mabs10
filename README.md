@@ -12,7 +12,7 @@ This plugin uses NDEF (NFC Data Exchange Format) for maximum compatibilty betwee
 ## Supported Platforms
 
 - Android
-- [iOS 11](#ios-notes)
+- [iOS 16](#ios-notes)
 
 ## Contents
 
@@ -49,7 +49,7 @@ See [Getting Started](https://github.com/chariotsolutions/nfc_mabs10/blob/master
 
 ## iOS Notes
 
-Reading NFC NDEF tags is supported on iPhone 7 and iPhone 7 Plus running iOS 11. To enable your app to detect NFC tags, the plugin adds the Near Field Communication Tag Reading capability in your Xcode project. You must build your application with XCode 9. See the [Apple Documentation](http://help.apple.com/xcode/mac/current/#/dev88ff319e7) for more info.
+Reading NFC NDEF tags is supported on iPhone running iOS 16. To enable your app to detect NFC tags, the plugin adds the Near Field Communication Tag Reading capability in your Xcode project. You must build your application with XCode 14. See the [Apple Documentation](http://help.apple.com/xcode/mac/current/#/dev88ff319e7) for more info.
 
 Use [nfc.addNdefListener](#nfcaddndeflistener) to read NDEF NFC tags with iOS. Unfortunately, iOS also requires you to begin a session before scanning NFC tag. The JavaScript API contains two new iOS specific functions [nfc.beginSession](#nfcbeginsession) and [nfc.invalidateSession](#nfcinvalidatesession).
 
@@ -99,8 +99,6 @@ Registers an event listener for any NDEF tag.
 Function `nfc.addNdefListener` registers the callback for ndef events.
 
 A ndef event is fired when a NDEF tag is read.
-
-For BlackBerry 10, you must configure the type of tags your application will read with an [invoke-target in config.xml](#blackberry-10-invoke-target).
 
 On Android registered [mimeTypeListeners](#nfcaddmimetypelistener) takes precedence over this more generic NDEF listener.
 
@@ -628,8 +626,6 @@ Multiple listeners can be registered in JavaScript. e.g. addNdefListener, addTag
 
 On Android, only the most specific event will fire. If a Mime Media Tag is scanned, only the addMimeTypeListener callback is called and not the callback defined in addNdefListener. You can use the same event handler for multiple listeners.
 
-For Windows, this plugin mimics the Android behavior. If an ndef event is fired, a tag event will not be fired. You should receive one event per tag.
-
 ## addTagDiscoveredListener
 
 On Android, addTagDiscoveredListener scans non-NDEF tags and NDEF tags. The tag event does NOT contain an ndefMessage even if there are NDEF messages on the tag. Use addNdefListener or addMimeTypeListener to get the NDEF information.
@@ -707,7 +703,7 @@ Beginning NFC: Near Field Communication with Arduino, Android, and PhoneGap</a><
 
 The MIT License
 
-Copyright (c) 2011-2017 Chariot Solutions
+Copyright (c) 2011-2017
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
