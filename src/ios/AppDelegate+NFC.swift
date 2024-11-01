@@ -5,7 +5,7 @@
 //
 import CoreNFC
 
-/*extension AppDelegate {
+extension AppDelegate {
     
     override open func application(_ application: UIApplication,
                      continue userActivity: NSUserActivity,
@@ -49,4 +49,4 @@ import CoreNFC
             return false
         }
     }
-}*/
+}
