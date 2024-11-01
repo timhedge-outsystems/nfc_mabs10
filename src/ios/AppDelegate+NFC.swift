@@ -13,12 +13,12 @@ extension AppDelegate {
         
         NSLog("Extending UIApplicationDelegate")
         
-        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb else {
+        /*guard userActivity.activityType == NSUserActivityTypeBrowsingWeb else {
             return false
-        }
+        }*/
         
         // Confirm that the NSUserActivity object contains a valid NDEF message.
-        /*if #available(iOS 12.0, *) {
+        if #available(iOS 12.0, *) {
             let ndefMessage = userActivity.ndefMessagePayload
             guard ndefMessage.records.count > 0,
             ndefMessage.records[0].typeNameFormat != .empty else {
@@ -47,6 +47,6 @@ extension AppDelegate {
             
         } else {
             return false
-        }*/
+        }
     }
 }
