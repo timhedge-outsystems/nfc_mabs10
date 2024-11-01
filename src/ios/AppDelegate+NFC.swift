@@ -5,7 +5,7 @@
 //
 import CoreNFC
 
-public extension AppDelegate {
+extension AppDelegate {
     
     override open func application(_ application: UIApplication,
                      continue userActivity: NSUserActivity,
