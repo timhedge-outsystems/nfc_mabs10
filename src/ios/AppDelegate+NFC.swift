@@ -49,4 +49,4 @@ import CoreNFC
             return false
         }
     }
-}
+}*/
