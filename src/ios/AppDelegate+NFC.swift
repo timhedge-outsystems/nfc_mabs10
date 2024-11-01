@@ -5,7 +5,7 @@
 //
 import CoreNFC
 
-/* extension AppDelegate {
+extension AppDelegate {
     
     override open func application(_ application: UIApplication,
                      continue userActivity: NSUserActivity,
@@ -18,7 +18,7 @@ import CoreNFC
         }
         
         // Confirm that the NSUserActivity object contains a valid NDEF message.
-        if #available(iOS 12.0, *) {
+        /*if #available(iOS 12.0, *) {
             let ndefMessage = userActivity.ndefMessagePayload
             guard ndefMessage.records.count > 0,
             ndefMessage.records[0].typeNameFormat != .empty else {
@@ -47,6 +47,6 @@ import CoreNFC
             
         } else {
             return false
-        }
+        }*/
     }
-} */
+}
