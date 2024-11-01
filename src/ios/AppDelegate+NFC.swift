@@ -11,11 +11,11 @@ extension AppDelegate {
                      continue userActivity: NSUserActivity,
                      restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         
-        NSLog("Extending UIApplicationDelegate")
+        //NSLog("Extending UIApplicationDelegate")
         
-        /*guard userActivity.activityType == NSUserActivityTypeBrowsingWeb else {
+        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb else {
             return false
-        }*/
+        }
         
         // Confirm that the NSUserActivity object contains a valid NDEF message.
         if #available(iOS 12.0, *) {
