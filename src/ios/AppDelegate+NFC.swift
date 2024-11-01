@@ -7,11 +7,11 @@ import CoreNFC
 
 extension AppDelegate {
     
-    override open func application(_ application: UIApplication,
+    override /*open*/ func application(_ application: UIApplication,
                      continue userActivity: NSUserActivity,
                      restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         
-        //NSLog("Extending UIApplicationDelegate")
+        NSLog("Extending UIApplicationDelegate")
         
         guard userActivity.activityType == NSUserActivityTypeBrowsingWeb else {
             return false
