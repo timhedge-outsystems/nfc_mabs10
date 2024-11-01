@@ -7,7 +7,7 @@ import CoreNFC
 
 extension AppDelegate {
     
-    /*override open func application(_ application: UIApplication,
+    override public func application(_ application: UIApplication,
                      continue userActivity: NSUserActivity,
                      restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         
@@ -48,5 +48,5 @@ extension AppDelegate {
         } else {
             return false
         }
-    }*/
+    }
 }
